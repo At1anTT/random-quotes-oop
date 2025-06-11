@@ -1,7 +1,7 @@
-import RandomQuote from './src/RandomQuote.js';
+import RandomQuote from "./src/RandomQuote.js";
 
-function displaCurrentQuote(quote) {
-  const { id, text, author} = quote;
+function displayCurrentQuote(quote) {
+  const { id, text, author } = quote;
   const quoteElement = document.getElementById("quote");
   const quoteTextElement = document.getElementById("quote-text");
   const quoteAuthorElement = document.getElementById("quote-author");
@@ -10,9 +10,8 @@ function displaCurrentQuote(quote) {
   quoteAuthorElement.textContent = author;
 }
 
-
-const randomQuoteBtn = document.getElementById('random-quote-btn')
-randomQuoteBtn.addEventListener('click', () => {
-  const randomQuote = RandomQuote.getRandomQuote()
-  displaCurrentQuote(randomQuote)
+const randomQuoteBtn = document.getElementById("random-quote-btn");
+randomQuoteBtn.addEventListener("click", () => {
+  const randomQuote = RandomQuote.getRandomQuote();
+  displayCurrentQuote(randomQuote);
 });
