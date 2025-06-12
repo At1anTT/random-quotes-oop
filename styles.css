@@ -56,11 +56,11 @@ button {
   min-height: 2.3em;
   margin-block-end: 0.7em;
 }
-
+/* 
 .quote-text::before,
 .quote-text::after {
   content: '"';
-}
+} */
 
 .quote-author {
   font-weight: bold;
