@@ -18,19 +18,25 @@ class RandomQuotesApp {
     this.quoteAuthorElement.textContent = this.currentQuote.formatAuthor();
   }
 
-  getRandomQuote() {
-    const randomQuote = RandomQuote.getRandomQuote();
-    this.currentQuote = randomQuote;
-    this.displayCurrentQuote();
+  changeCurrentQuote(newQuote) {
+    if (newQuote instanceof Quote) {
+      this.currentQuote = newQuote;
+      this.displayCurrentQuote();
+    }
   }
 
-  getRandomQuoteViaAPI() {
-    RandomQuote.getRandomQuoteViaApi().then((quote) => {
-      if (quote instanceof Quote) {
-        this.currentQuote = quote;
-        this.displayCurrentQuote();
-      }
-    });
+  getRandomQuote() {
+    const randomQuote = this.changeCurrentQuote(RandomQuote.getRandomQuote());
+  }
+
+  // getRandomQuoteViaAPI() {
+  //   RandomQuote.getRandomQuoteViaApi().then((quote) => {
+  //     this.changeCurrentQuote(quote);
+  //   });
+  // }
+
+  async getRandomQuoteViaAPI() {
+    this.changeCurrentQuote(await RandomQuote.getRandomQuoteViaApi());
   }
 
   init() {
