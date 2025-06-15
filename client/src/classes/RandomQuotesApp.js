@@ -25,7 +25,7 @@ class RandomQuotesApp {
     }
   }
 
-  getRandomQuote() {
+  randomQuoteHandler() {
     const randomQuote = this.changeCurrentQuote(RandomQuote.getRandomQuote());
   }
 
@@ -35,14 +35,16 @@ class RandomQuotesApp {
   //   });
   // }
 
-  async getRandomQuoteViaAPI() {
+  async randomQuoteViaAPIHandler() {
     this.changeCurrentQuote(await RandomQuote.getRandomQuoteViaApi());
   }
 
   init() {
-    this.randomQuoteBtn.addEventListener("click", () => this.getRandomQuote());
+    this.randomQuoteBtn.addEventListener("click", () =>
+      this.randomQuoteHandler()
+    );
     this.randomQuoteAPIBtn.addEventListener("click", () =>
-      this.getRandomQuoteViaAPI()
+      this.randomQuoteViaAPIHandler()
     );
   }
 }
