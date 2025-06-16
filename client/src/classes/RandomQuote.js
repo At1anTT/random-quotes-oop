@@ -16,7 +16,7 @@ class RandomQuote {
    * Поэтому,нет смысла вызывать try/cathc блок там где мы вызываем getRandomQuoteViaApi
    */
 
-  static async getRandomQuoteViaApi() {
+  static async getRandomQuoteViaPublicApi() {
     const url = "https://quoteslate.vercel.app/api/quotes/random";
     const options = { headers: { "Content-Type": "application/json" } };
 
@@ -26,7 +26,7 @@ class RandomQuote {
       const { id, quote, author } = cur_quote;
       return new Quote(id, quote, author);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   }
 
@@ -39,6 +39,20 @@ class RandomQuote {
   //     .then(({ id, quote, author }) => new Quote(id, quote, author))
   //     .catch((error) => console.error("Error", error));
   // }
+
+  static async getRandomQuoteViaOwnApi() {
+    const url = "http://localhost:3000/quotes/random-single";
+    const options = { headers: { "Content-Type": "application/json" } };
+
+    try {
+      const response = await fetch(url, options);
+      const quote = await response.json();
+      const { id, text, author } = quote;
+      return new Quote(id, text, author);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
 
 export default RandomQuote;
