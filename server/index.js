@@ -6,6 +6,19 @@ const quotes = require("./data/quotes");
 const app = express();
 const PORT = 3000;
 
+// const corsOptions = {
+//   origin: "http://localhost:8000",
+// };
+
+// app.use((req, res, next) => {
+//   console.log('Middleware 1')
+// })
+
+// app.unsubscribe((req, res, next) => {
+//   console.log('Middleware 1')
+// })
+
+// app.use(cors(corsOptions));
 app.use(cors());
 
 function getRandomQuote() {
