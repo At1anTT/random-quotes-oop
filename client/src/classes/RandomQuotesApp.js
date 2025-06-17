@@ -41,24 +41,37 @@ class RandomQuotesApp {
   //   });
   // }
 
-  async handleRandomQuoteViaPublicAPI() {
-    this.changeCurrentQuote(await RandomQuote.getRandomQuoteViaPublicApi());
-  }
+  // async handleRandomQuoteViaPublicAPI() {
+  //   this.changeCurrentQuote(await RandomQuote.getRandomQuoteViaPublicApi());
+  // }
 
-  async handleRandomQuoteViaOwnAPI() {
-    this.changeCurrentQuote(await RandomQuote.getRandomQuoteViaOwnApi());
-  }                                           
+  // async handleRandomQuoteViaOwnAPI() {
+  //   this.changeCurrentQuote(await RandomQuote.getRandomQuoteViaOwnApi());
+  // }
+
+  async handleRandomQuoteViaAPI(apiIsOwn = false) {
+    //   if (apiIsOwn) {
+    //     this.changeCurrentQuote(await RandomQuote.getRandomQuoteViaOwnApi());
+    //   } else {
+    //     this.changeCurrentQuote(await RandomQuote.getRandomQuoteViaPublicApi());
+    //   }
+    this.changeCurrentQuote(
+      apiIsOwn
+        ? await RandomQuote.getRandomQuoteViaOwnApi()
+        : await RandomQuote.getRandomQuoteViaPublicApi()
+    );
+  }
 
   init() {
     this.randomQuoteBtn.addEventListener("click", () =>
       this.randomQuoteHandler()
     );
     this.randomQuotePublicAPIBtn.addEventListener("click", () =>
-      this.handleRandomQuoteViaPublicAPI()
+      this.handleRandomQuoteViaAPI()
     );
 
     this.randomQuoteOwnAPIBtn.addEventListener("click", () =>
-      this.handleRandomQuoteViaOwnAPI()
+      this.handleRandomQuoteViaAPI(true)
     );
   }
 }

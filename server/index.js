@@ -22,6 +22,7 @@ const PORT = 3000;
 app.use(cors());
 
 function getRandomQuote() {
+  console.log("req");
   const randomIndex = Math.floor(Math.random() * quotes.length);
   return quotes[randomIndex];
 }
